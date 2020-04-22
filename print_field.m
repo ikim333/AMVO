@@ -1,6 +1,6 @@
 function print_field (u, nom)
 
-n=size(u,1)-2;
+n = size(u,1)-2;
 
 fprintf('%s \n',nom);
 
