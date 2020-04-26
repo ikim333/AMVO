@@ -56,6 +56,7 @@ hold on
 loglog(delta,error(2,:))    %Evolució del terme difusiu
 loglog(delta,delta.^2)
 legend('Convectiu x','Difusiu x','h^2')
-xlabel('delta')
-ylabel('error')
+axis([10^-2 10^-1 10^-5 10])
+xlabel('log h')
+ylabel('log Error')
 
