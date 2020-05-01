@@ -8,6 +8,7 @@
 %The numerical solution obtained is comapred to an analytical solution to
 %validate the results.
 
+%%
 clear all
 clc
 
@@ -21,7 +22,7 @@ visc=1.2;   %Viscosity of the fluid []
 
 %The simulation is carried out for different mesh densities
 
-n_eval=7;   %Number of different mesh densities studied
+n_eval=10;   %Number of different mesh densities studied
 
 %Initialize vector with the number of divisions in each axis (one value for each mesh density being studied) 
 N = zeros(n_eval,1);    
@@ -58,32 +59,36 @@ for i=1:n_eval
     %Numerical diffusive term
     [diffusive_term_u, diffusive_term_v] = diffusive(u, v, N(i), delta(i), visc);
 
+    
     %Numerical convective term
     [convective_term_u] = convective(u, v, delta(i), N(i));
     [convective_term_v] = convective(v, u, delta(i), N(i));
 
+    
     %Analitycal convective and diffusive terms
-    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic (N(i), coord_u, coord_v, visc, delta(i));
+    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic (N(i), coord_u, coord_v, visc);
 
+    
+    %Difference between analitical and numerical results
     [error_conv, error_diff] = max_error (analitic_conv_u, convective_term_u, analitic_diff_u, diffusive_term_u, N(i));
 
     error(1,i) = error_conv;
     error(2,i) = error_diff;
     
-    
-    
+
 end
 
 
 %% POSTPROCESSING
 
-loglog(delta,error(1,:))   %Evolució del terme convectiu
+%Plot 
+loglog(delta,error(1,:))   %Evolution of the convective term
 grid on
 hold on
-loglog(delta,error(2,:))    %Evolució del terme difusiu
+loglog(delta,error(2,:))    %Evolution of the diffusive term
 loglog(delta,delta.^2)
-legend('Convectiu x','Difusiu x','h^2')
-axis([10^-2 10^-1 10^-5 10])
-xlabel('log h')
-ylabel('log Error')
+legend('Convective Error','Diffusive Error','h^2')
+axis([10^-3 10^0 10^-5 10])
+xlabel('log_{10} h')
+ylabel('log_{10} Error')
 
