@@ -1,14 +1,10 @@
-<<<<<<< HEAD:analitic_A.m
-function [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_A (N, coord_u, coord_v, visc, delta)
-=======
 %% ANALITIC
 %This function calcualtes the convective and diffusive term analitycally,
 %using an aribitraryly defined velocity field. As inputs it uses the number
 %of divisions of the domain, the coordinates of each node and the viscosity
 %of the fluid.
->>>>>>> 2d86443761f3c0cc0e5099f1437da0f5056d466e:analitic.m
 
-function [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic (N, coord_u, coord_v, visc)
+function [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_A (N, coord_u, coord_v, visc, delta)
 
 %Define sym variables
 syms x y

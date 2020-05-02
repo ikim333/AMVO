@@ -39,23 +39,19 @@ error = zeros(2,n_eval);    %Initialize error vector
 
 %% PREPROCESSING and PROCESSING
 
-<<<<<<< HEAD
-    [u,v] = arbitrary_velocities_A (N, coord_u, coord_v);
-=======
 %Calcualtions to be carried out for each meash density
 for i=1:n_eval
     
-    %% PREPROCESSING
+%PREPROCESSING
     
     % Size of each division of the domain
     delta(i)=(L/N(i));  
->>>>>>> 2d86443761f3c0cc0e5099f1437da0f5056d466e
 
     %Coordinates of each node of the domain
     [coord_u, coord_v] = coordinates (N(i), delta(i));
 
     %Velocity at each node of the domain
-    [u,v] = arbitrary_velocities (N(i), coord_u, coord_v);
+    [u,v] = arbitrary_velocities_A (N(i), coord_u, coord_v);
 
 
     %% PROCESSING
@@ -63,18 +59,15 @@ for i=1:n_eval
     %Numerical diffusive term
     [diffusive_term_u, diffusive_term_v] = diffusive(u, v, N(i), delta(i), visc);
 
-<<<<<<< HEAD
     [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_A (N, coord_u, coord_v, visc, delta(i));
-=======
+
     
     %Numerical convective term
     [convective_term_u] = convective(u, v, delta(i), N(i));
     [convective_term_v] = convective(v, u, delta(i), N(i));
->>>>>>> 2d86443761f3c0cc0e5099f1437da0f5056d466e
 
-    
     %Analitycal convective and diffusive terms
-    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic (N(i), coord_u, coord_v, visc);
+    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_A (N(i), coord_u, coord_v, visc);
 
     
     %Difference between analitical and numerical results

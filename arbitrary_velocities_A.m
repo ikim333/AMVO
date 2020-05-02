@@ -1,12 +1,8 @@
-<<<<<<< HEAD:arbitrary_velocities_A.m
-function [u,v] = arbitrary_velocities_A (N, coord_u, coord_v)
-=======
 %% Arbitrary velocity field
 %This function returns the two components of the velocity at each node of
 %the domain. This velocity field has been chosen arbitrarily, given that it
 %fulfills a series of basic requierements. The input values used are the
 %number of divisions of the domain and the ccordinates of each node.
->>>>>>> 2d86443761f3c0cc0e5099f1437da0f5056d466e:arbitrary_velocities.m
 
 function [u,v] = arbitrary_velocities (N, coord_u, coord_v)
 
