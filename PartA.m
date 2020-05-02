@@ -26,7 +26,7 @@ for i=1:n_eval
 
     [coord_u, coord_v] = coordinates (N, delta(i));
 
-    [u,v] = arbitrary_velocities (N, coord_u, coord_v);
+    [u,v] = arbitrary_velocities_A (N, coord_u, coord_v);
 
 
 %%
@@ -38,7 +38,7 @@ for i=1:n_eval
     [convective_term_u] = convective(u, v, delta(i), N);
     [convective_term_v] = convective(v, u, delta(i), N);
 
-    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic (N, coord_u, coord_v, visc, delta(i));
+    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_A (N, coord_u, coord_v, visc, delta(i));
 
     [error_conv, error_diff] = max_error (analitic_conv_u, convective_term_u, analitic_diff_u, diffusive_term_u, N);
 

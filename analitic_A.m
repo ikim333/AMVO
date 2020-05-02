@@ -1,4 +1,4 @@
-function [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic (N, coord_u, coord_v, visc, delta)
+function [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_A (N, coord_u, coord_v, visc, delta)
 
 syms x y
 
