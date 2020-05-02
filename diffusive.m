@@ -1,27 +1,42 @@
+%% DIFFUSIVE
+%This function returns the values of the diffusive term of the NS equation
+%for all nodes of the domain. It returns both the vertical and horizontal
+%component, taking as inputs the velocity components at all nodes, the
+%number of division, the size of each division and the visocsity of the
+%fluid.
+
+
 function [diffusive_term_u, diffusive_term_v] = diffusive (u, v, N, delta, visc)
 
+%Initialize diffusive term vectors
 diffusive_term_u = zeros (N+2, N+2);
 diffusive_term_v = zeros (N+2, N+2);
 
 for i=2:(N+1)
     for j=2:(N+1)
+        %Calculate the values of velcoities partail derivative
         [du_xe, du_xw, du_yn, du_ys] = derivative (u, i, j, delta);
         [dv_xe, dv_xw, dv_yn, dv_ys] = derivative (v, i, j, delta);
         
+        %Start calcualting the value of the diffusive term using the 
+        %partial derivatives previously calcualted
         diffusive_term_u(i,j) = delta*du_xe - delta*du_xw + delta*du_yn - delta*du_ys;
         diffusive_term_v(i,j) = delta*dv_xe - delta*dv_xw + delta*dv_yn - delta*dv_ys;
     end
 end
 
-    diffusive_term_u = diffusive_term_u * visc;
-    diffusive_term_v = diffusive_term_v * visc;
-    
-    diffusive_term_u = diffusive_term_u./delta^2;
-    diffusive_term_v = diffusive_term_v./delta^2;
-    
-    diffusive_term_u = halo_updt(diffusive_term_u);
-    diffusive_term_v = halo_updt(diffusive_term_v);
+%Calcualte the value of teh diffusive term
+diffusive_term_u = diffusive_term_u * visc;
+diffusive_term_v = diffusive_term_v * visc;
 
-    %print_field(halo_updt(diffusive_term_u),'halo diffusive u')
-    %print_field(halo_updt(diffusive_term_v),'halo diffusive v')
+diffusive_term_u = diffusive_term_u./delta^2;
+diffusive_term_v = diffusive_term_v./delta^2;
+
+%As a periodic domain is being used, obtain the value of the diffusive
+%term at the edges using the halo_updt function
+diffusive_term_u = halo_updt(diffusive_term_u);
+diffusive_term_v = halo_updt(diffusive_term_v);
+
+%print_field(halo_updt(diffusive_term_u),'halo diffusive u')
+%print_field(halo_updt(diffusive_term_v),'halo diffusive v')
 end
