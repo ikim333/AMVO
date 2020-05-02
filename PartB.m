@@ -19,7 +19,7 @@ density = 1; %the density of the fluid
 
 %% NUMBER OF CV's
 
-N = 8; %number of divisions
+N = 10; %number of divisions
 delta = L/N; %side of each CV, we consider squared CV's
 
 %% PREPROCESSING & PROCESSING

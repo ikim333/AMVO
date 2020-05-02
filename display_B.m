@@ -22,5 +22,7 @@ plot([0,0],[0,L],'k') %defines global CV
 plot([L,0],[0,0],'k')
 plot([L,0],[L,L],'k')
 plot([L,L],[L,0],'k')
+xlabel('x [m]')
+ylabel('y [m]')
 drawnow
 hold off
