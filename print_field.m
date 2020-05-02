@@ -6,9 +6,16 @@ fprintf('%s \n',nom);
 
 for j=n+2:-1:1    
     for i=1:n+2
-        fprintf('%4.4f    ', u(i,j));          
+        if u(i,j)<0
+        fprintf('%4.2f    ', u(i,j));    
+        else 
+        fprintf('% 4.2f    ', u(i,j)); 
+        end
     end
         fprintf('\n')
 end
+
+ fprintf('\n')
+ fprintf('\n')
     
 end

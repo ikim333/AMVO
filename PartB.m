@@ -1,44 +1,61 @@
-%%APARTAT B
+%%PART B
+
+%AUTHORS: Miquel Badia, Daniel Longarón, Aranu Reyes
+%TEAM 06
+
+%This program will compute the velocity in each CV and, thruoghout the
+%pressure in each node, it will be verified that the local and global mass
+%is constant
 clear all
 clc
 
-%dades
+%% DATA INPUT
+
+%Geometrical, physical and numerical parameters
 L=1;
 visc=1.2;
 n_eval=7;
-density = 1;
-nom='APARTAT B';
+density = 1; %the density of the fluid
 
-%%
+%% NUMBER OF CV's
 
-N = 10;
-delta = L/N;
+N = 8; %number of divisions
+delta = L/N; %side of each CV, we consider squared CV's
 
-%%
+%% PREPROCESSING & PROCESSING
 
-A = matrixA(N);
+%matrix A is calculated for N divisions
+A = matrixA(N); 
 
+%coordinates and arbitriary velocities in each CV for part B
 [coord_u, coord_v] = coordinates (N, delta);
 
 [u,v] = arbitrary_velocities_B (N, coord_u, coord_v);
 
-[diffusive_term_u, diffusive_term_v] = diffusive(u, v, N, delta, visc);
-
-[convective_term_u] = convective(u, v, delta, N);
-[convective_term_v] = convective(v, u, delta, N);
-
-[Rx] = R_term (convective_term_u, diffusive_term_u, delta);
-[Ry] = R_term (convective_term_v, diffusive_term_v, delta);
-
+% time-step calculated with the data given
 delta_t = time_step (u, v, delta, visc);
 
-[p, U, V, div_U] = pressure (Rx, Ry, delta_t, u, v, N, delta, density, A)
+%b vector is calculated
+[b, div_u, up, vp] = b_vector (delta_t, delta, u, v, N);
 
-%%
+%pseudo_p is calculated
+pseudo_p = A \ b;
 
-analitic_p = analitic_B (density, coord_u, coord_v, visc, delta_t);
+%calculation for the pressure in each CV
+[p, u1, v1] = pressure (pseudo_p, density, delta_t, delta, N, up, vp);
 
-error_p = abs(analitic_p - p);
-error_p = max(max(error_p));
+%% RESULTS AND VERIFICATION
 
+%verification divergence 
+mass = local_mass_conservation (N, u, v);
+mass1 = local_mass_conservation (N, u1, v1);
+
+%numerical display of the results
+print_field (mass, 'Mass conservation before')
+print_field (mass1, 'Mass conservation after')
+print_field (div_u, 'Velocity divergence')
+
+%graphical display of the resultant vectors
+display_B (L, delta, coord_u, coord_v, u, v, N);
+display_B (L, delta, coord_u, coord_v, u1, v1, N);
 

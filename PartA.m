@@ -1,7 +1,7 @@
 %%PART A
 
 %AUTHORS: Miquel Badia, Daniel Longarón, Aranu Reyes
-%TEAM ?¿?
+%TEAM 06
 
 %This program computes the diffusive and convective term of the NS
 %equations  in a periodic two-dimensional domain, using a finite-control volume method
@@ -14,7 +14,7 @@ clc
 
 %% DATA INPUT
 
-%Geometrical, phisicall and numerical parameters
+%Geometrical, physical and numerical parameters
 
 L=1;    %Lenght of the domain (square domain, Lenght = Width)
 
