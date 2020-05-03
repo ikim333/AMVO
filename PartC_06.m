@@ -31,6 +31,7 @@ t = zeros(1,nts);
 error = zeros (1, length (N));
 
 
+
 %% CALCUALTIONS FOR T=0
 % Now we calculate the analytical solution for the velocities and pressure
 % fields when t = 0s
