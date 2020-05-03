@@ -35,7 +35,7 @@ for n=1:length(N)
     
     delta = L/N(n);
     
-    %% CALCUALTIONS FOR T=0
+    %% CALCULATIONS FOR T=0
     % Now we calculate the analytical solution for the velocities and pressure
     % fields when t = 0s
     [u_an0,v_an0,P_an0] = analytic_solution_C (N(n), delta, t, visc, density);
