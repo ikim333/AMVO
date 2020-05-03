@@ -1,4 +1,7 @@
-%%DERIVATIVE
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
+%% DERIVATIVE
 %This function returns the value of the partial derivatives of a component
 %of the velocity in all directions. Thi inputs used are the value of the
 %velocity in all nodes of the domain, the node being studied (i,j) and the

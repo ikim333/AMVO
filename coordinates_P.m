@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% PRESSURE COORDINATES
 %This function returns the 2D coordinates of each node of the domain for
 %the pressure field, given the number of divisions and the size of each 

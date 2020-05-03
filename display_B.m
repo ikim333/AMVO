@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% DISPLAY B
 %this function will display the velocity vectors in each coordinate before
 %and after the correction

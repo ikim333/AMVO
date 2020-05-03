@@ -1,3 +1,7 @@
+%AUTHORS: Miquel Badia, Daniel Longarón, Aranu Reyes
+%TEAM 06
+
+%%This f
 function print_field (u, nom)
 
 n = size(u,1)-2;

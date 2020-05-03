@@ -1,3 +1,8 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
+%% PRESSURE_FIELD
+
 function [p, u1, v1, div_u] = pressure_field (u, v, N, delta, visc, density)
 
 
@@ -25,6 +30,6 @@ delta_t = time_step (u, v, delta, visc);
 pseudo_p = A \ b;
 
 %calculation for the pressure in each CV
-[p, u1, v1] = pressure_velocity (pseudo_p, Rx, Ry, density, delta_t, delta, N, up, vp);
+[p, u1, v1] = pressure_velocity (pseudo_p, density, delta_t, delta, N, up, vp);
 
 end

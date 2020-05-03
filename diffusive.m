@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% DIFFUSIVE
 %This function returns the values of the diffusive term of the NS equation
 %for all nodes of the domain. It returns both the vertical and horizontal

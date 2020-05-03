@@ -1,10 +1,13 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% Arbitrary velocity field
 %This function returns the two components of the velocity at each node of
 %the domain. This velocity field has been chosen arbitrarily, given that it
 %fulfills a series of basic requierements. The input values used are the
 %number of divisions of the domain and the ccordinates of each node.
 
-function [u,v] = arbitrary_velocities (N, coord_u, coord_v)
+function [u,v] = arbitrary_velocities_A (N, coord_u, coord_v)
 
 %Initialize the velocity vectors
 u = zeros(N+2, N+2);

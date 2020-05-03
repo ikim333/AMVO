@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longarón, Aranu Reyes
+%TEAM 06
+
 %% TIME STEP
 %this function will determine the delta_t that differences n-1 form n
 %conditions

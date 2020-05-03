@@ -1,4 +1,7 @@
-%% PRESSURE MATRIX
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
+%% ANALYTIC_SOLUTION_C
 
 % This function calculates the analytical solution for the velocities, and
 % pressure fields in order to compare them with the numerical results.

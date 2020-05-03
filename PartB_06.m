@@ -12,8 +12,8 @@ clc
 %% DATA INPUT
 
 %Geometrical, physical and numerical parameters
-L=1;
-visc=1.2;
+L=1;    %The longitude of the domain
+visc=1.2;   %the viscosity of the fluid
 density = 1; %the density of the fluid
 
 %% NUMBER OF CV's
@@ -25,7 +25,7 @@ delta = L/N; %side of each CV, we consider squared CV's
 %coordinates and arbitriary velocities in each CV for part B
 [coord_u, coord_v] = coordinates (N, delta);
 
-[u,v] = arbitrary_velocities_B (N, coord_u, coord_v);
+[u,v] = arbitrary_velocities_B (N);
 
 %% PROCESSING
 [p, u1, v1, div_u] = pressure_field (u, v, N, delta, visc, density);

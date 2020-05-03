@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% A MATRIX
 % this function will define the A matrix needed to calculate pseudo_p
 

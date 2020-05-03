@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% HALO UPDATE
 
 %To avoid boundary conditions, a periodic domain is used. 

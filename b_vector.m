@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% B VECTOR
 %this function will calculate the b vector for the given velocities and
 %data

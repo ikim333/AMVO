@@ -1,8 +1,11 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% PRESSURE
 %this function calculates the pressure and velocities at t=n, which will be
 %then be used to verify the mass conservation
 
-function [p, u1, v1] = pressure_velocity (pseudo_p, Rx, Ry, density, delta_t, delta, N, up, vp);
+function [p, u1, v1] = pressure_velocity (pseudo_p, density, delta_t, delta, N, up, vp)
 
 pseudo_p = reshape(pseudo_p,[N,N]);
 

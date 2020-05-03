@@ -1,4 +1,7 @@
-%% ANALITIC
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
+%% ANALYTIC_SOLUTION_A
 %This function calcualtes the convective and diffusive term analitycally,
 %using an aribitraryly defined velocity field. As inputs it uses the number
 %of divisions of the domain, the coordinates of each node and the viscosity

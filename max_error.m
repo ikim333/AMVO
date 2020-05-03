@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% MAXIMUM ERROR
 %this function calculates the maximum difference between values of the
 %numerical and analitic results

@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% KINETIC ENERGY
 %This function returns the kinetic energy value for each given velocity 
 %field component 

@@ -1,3 +1,6 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% CONVECTIVE
 %This function returns the values of the convective term of the NS equation
 %for all nodes of the domain. It takes as inputs the velocity components at all nodes, the

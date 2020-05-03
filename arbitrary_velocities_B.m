@@ -1,7 +1,10 @@
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
 %% ARBITRARY VELOCITIES
 %this function fixes arbitrary velocities for part B
 
-function [u,v] = arbitrary_velocities_B (N, coord_u, coord_v)
+function [u,v] = arbitrary_velocities_B (N)
 
 %the following arbitrary velocities are fixed. The local mass conservation
 %will not be satisfied, however, the global will be satisfied.

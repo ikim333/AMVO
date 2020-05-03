@@ -1,4 +1,7 @@
-%% VELOCITY FIELD
+%AUTHORS: Miquel Badia, Daniel Longaron, Aranu Reyes
+%TEAM 06
+
+%% ARBITRARY_VELOCITIES_C
 
 % This function calculates the velocity field with zero divergence for a 
 % given time using a periodic function as seen in slide 42 from 
