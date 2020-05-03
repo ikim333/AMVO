@@ -14,11 +14,12 @@ clc
 %Geometrical, phisicall and numerical parameters
 
 L = 1;    %Lenght of the domain (square domain, Lenght = Width)
-visc = 1.2; 
+visc = 1; 
 density = 1; % density [kg/m^3]
 
-N = [5 10 15 20];   % number mesh divisions
+N = 10;   % number mesh divisions
 nts = 60; % number of time steps
+delta = L/N;
 
 % Initialize vectors where the values of velocity, pressure and kinetic
 % energy for node (3,3), for each instant of time analized, will be stored
@@ -29,66 +30,55 @@ u_an = zeros(1,nts); v_an = zeros(1,nts); K_an = zeros(1,nts); P_an = zeros(1,nt
 t = zeros(1,nts);
 error = zeros (1, length (N));
 
-%% PROCESSING
 
-for n=1:length(N) 
-    
-    delta = L/N(n);
-    
-    %% CALCUALTIONS FOR T=0
-    % Now we calculate the analytical solution for the velocities and pressure
-    % fields when t = 0s
-    [u_an0,v_an0,P_an0] = analytic_solution_C (N(n), delta, t, visc, density);
+%% CALCUALTIONS FOR T=0
+% Now we calculate the analytical solution for the velocities and pressure
+% fields when t = 0s
+[u_an0,v_an0,P_an0] = analytic_solution_C (N, delta, t, visc, density);
 
-    k = kinetic_energy(u_an0, v_an0, delta, N(n));
+k = kinetic_energy(u_an0, v_an0, delta, N);
+
+%Calculate analitic velocity values
+[u,v] = arbitrary_velocities_C(N, delta, visc,t(1));
+
+%Calculate numeric pressure and velocity field
+[p, u1, v1, div_u] = pressure_field (u, v, N, delta, visc, density);
+
+%Calculate the kinetic energy
+K = kinetic_energy(u1, v1, delta, N);
+
+
+%Save the numerical and analitycal values in node (3, 3)for the initial
+%time step
+u_num(1)=u1(3,3);    v_num(1)=v1(3,3);    P_num(1)=p(3,3);    K_num(1)=K;
+u_an(1)=u_an0(3,3);    v_an(1)=v_an0(3,3);    P_an(1)=P_an0(3,3);    K_an(1)=K;
+
+%% ITERATION FOR EACH TIME STEP
+for i=2:nts
+
+    delta_t = time_step(u, v, delta, visc); %[s]
+    t(i) = t(i-1) + delta_t; %[s]
 
     %Calculate analitic velocity values
-    [u,v] = arbitrary_velocities_C(N(n), delta, visc,t(1));
+    [u, v] = arbitrary_velocities_C (N, delta, visc, t(i));
 
     %Calculate numeric pressure and velocity field
-    [p, u1, v1, div_u] = pressure_field (u, v, N(n), delta, visc, density);
+    [p, u1, v1, div_u] = pressure_field (u, v, N, delta, visc, density);
 
     %Calculate the kinetic energy
-    K = kinetic_energy(u1, v1, delta, N(n));
+    K = kinetic_energy(u1, v1, delta, N);
 
-    
-    %Save the numerical and analitycal values in node (3, 3)for the initial
-    %time step
-    u_num(1)=u1(3,3);    v_num(1)=v1(3,3);    P_num(1)=p(3,3);    K_num(1)=K;
-    u_an(1)=u_an0(3,3);    v_an(1)=v_an0(3,3);    P_an(1)=P_an0(3,3);    K_an(1)=K;
+    [u_an0, v_an0, P_an0] = analytic_solution_C (N, delta, t(i), visc, density);
+    k = kinetic_energy(u_an0,v_an0,delta,N);
 
-    %% ITERATION FOR EACH TIME STEP
-    for i=2:nts
+    %Save the numerical and analitycal values in node (3, 3)for the
+    %currentn time step
+    u_num(i)=u1(3,3);        v_num(i)=v1(3,3);        P_num(i)=p(3,3);        K_num(i)=K;
+    u_an(i)=u_an0(3,3);        v_an(i)=v_an0(3,3);        P_an(i)=P_an0(3,3);        K_an(i)=K;
 
-        delta_t = time_step(u, v, delta, visc); %[s]
-        t(i) = t(i-1) + delta_t; %[s]
-        
-        %Calculate analitic velocity values
-        [u, v] = arbitrary_velocities_C (N(n), delta, visc, t(i));
-
-        %Calculate numeric pressure and velocity field
-        [p, u1, v1, div_u] = pressure_field (u, v, N(n), delta, visc, density);
-
-        %Calculate the kinetic energy
-        K = kinetic_energy(u1, v1, delta, N(n));
-
-        [u_an0, v_an0, P_an0] = analytic_solution_C (N(n), delta, t(i), visc, density);
-        k = kinetic_energy(u_an0,v_an0,delta,N(n));
-
-        error(n) = vel_error_C(u, v, u1, v1, error(n));
-        %Save the numerical and analitycal values in node (3, 3)for the
-        %currentn time step
-        u_num(i)=u1(3,3);        v_num(i)=v1(3,3);        P_num(i)=p(3,3);        K_num(i)=K;
-        u_an(i)=u_an0(3,3);        v_an(i)=v_an0(3,3);        P_an(i)=P_an0(3,3);        K_an(i)=K;
-
-    end
 end
+
 %% POSTPROCESSING
-
-%Plot error
-
-
-
 
 %Plot velocity
 figure
