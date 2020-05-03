@@ -43,7 +43,7 @@ k = kinetic_energy(u_an0, v_an0, delta, N);
 [u,v] = arbitrary_velocities_C(N, delta, visc,t(1));
 
 %Calculate numeric pressure and velocity field
-[p, u1, v1, div_u] = pressure_field (u, v, N, delta, visc, density);
+[p, u1, v1, div_u] = pressure_velocity_field (u, v, N, delta, visc, density);
 
 %Calculate the kinetic energy
 K = kinetic_energy(u1, v1, delta, N);
@@ -64,7 +64,7 @@ for i=2:nts
     [u, v] = arbitrary_velocities_C (N, delta, visc, t(i));
 
     %Calculate numeric pressure and velocity field
-    [p, u1, v1, div_u] = pressure_field (u, v, N, delta, visc, density);
+    [p, u1, v1, div_u] = pressure_velocity_field (u, v, N, delta, visc, density);
 
     %Calculate the kinetic energy
     K = kinetic_energy(u1, v1, delta, N);

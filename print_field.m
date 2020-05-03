@@ -1,7 +1,9 @@
 %AUTHORS: Miquel Badia, Daniel Longarón, Aranu Reyes
 %TEAM 06
 
-%%This f
+%% PRINT_FIELD
+%This funciton prints the given field
+
 function print_field (u, nom)
 
 n = size(u,1)-2;
