@@ -14,7 +14,7 @@ clc
 %Geometrical, phisicall and numerical parameters
 
 L = 1;    %Lenght of the domain (square domain, Lenght = Width)
-visc = 1.2;   %Viscosity of the fluid []
+visc = 1.2;   %Re = 100
 density = 1; % density [kg/m^3]
 
 N = 10;   % number mesh divisions
@@ -37,9 +37,9 @@ t = zeros(1,nts);
 % Now we calculate the analytical solution for the velocities and pressure
 % fields when t = 0s
 
-[u_ar,v_ar,P_ar] = analytic_solution_C (N, delta, t, visc, density);
+[u_an0,v_an0,P_an0] = analytic_solution_C (N, delta, t, visc, density);
 
-k = kinetic_energy(u_ar, v_ar, delta, N);
+k = kinetic_energy(u_an0, v_an0, delta, N);
 
 %We call the velocity numerical field function calculator
 [u,v] = arbitrary_velocities_C(N, delta, visc,t(1));
@@ -52,9 +52,9 @@ u_num(1)=u1(3,3);
 v_num(1)=v1(3,3);
 P_num(1)=p(3,3);
 K_num(1)=K;
-u_an(1)=u_ar(3,3);
-v_an(1)=v_ar(3,3);
-P_an(1)=P_ar(3,3);
+u_an(1)=u_an0(3,3);
+v_an(1)=v_an0(3,3);
+P_an(1)=P_an0(3,3);
 K_an(1)=K;
 
 % Process iteration for each time step
@@ -69,17 +69,17 @@ for i=2:nts
 
     K = kinetic_energy(u1, v1, delta, N);
     
-    [u_ar, v_ar, P_ar] = analytic_solution_C (N, delta, t(i), visc, density);
-    k = kinetic_energy(u_ar,v_ar,delta,N);
+    [u_an0, v_an0, P_an0] = analytic_solution_C (N, delta, t(i), visc, density);
+    k = kinetic_energy(u_an0,v_an0,delta,N);
     
     %Finally we fill the desired vectors for post-processing
     u_num(i)=u1(3,3);
     v_num(i)=v1(3,3);
     P_num(i)=p(3,3);
     K_num(i)=K;
-    u_an(i)=u_ar(3,3);
-    v_an(i)=v_ar(3,3);
-    P_an(i)=P_ar(3,3);
+    u_an(i)=u_an0(3,3);
+    v_an(i)=v_an0(3,3);
+    P_an(i)=P_an0(3,3);
     K_an(i)=K;
     
 end
