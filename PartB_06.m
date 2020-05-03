@@ -14,7 +14,6 @@ clc
 %Geometrical, physical and numerical parameters
 L=1;
 visc=1.2;
-n_eval=7;
 density = 1; %the density of the fluid
 
 %% NUMBER OF CV's

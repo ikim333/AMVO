@@ -18,7 +18,7 @@ clc
 
 L=1;    %Lenght of the domain (square domain, Lenght = Width)
 
-visc=1.2;   %Viscosity of the fluid []
+visc=1.2;   %Viscosity of the fluid
 
 %The simulation is carried out for different mesh densities
 

@@ -14,7 +14,7 @@ clc
 %Geometrical, phisicall and numerical parameters
 
 L = 1;    %Lenght of the domain (square domain, Lenght = Width)
-visc = 1.2;   %Re = 100
+visc = 1.2; 
 density = 1; % density [kg/m^3]
 
 N = 10;   % number mesh divisions
@@ -86,7 +86,7 @@ end
 
 %% POSTPROCESSING
 
-%Plot 
+%Plot velocity
 
 figure
 hold on
@@ -99,6 +99,7 @@ ylabel('Velocity at position (3,3) [m/s]')
 xlabel('Time [s]')
 legend('u_a','u_n_u_m','v_a','v_n_u_m')
 
+%Plot kinetic energy
 figure
 hold on
 grid on
