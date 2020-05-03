@@ -29,9 +29,6 @@ end
 diffusive_term_u = diffusive_term_u * visc;
 diffusive_term_v = diffusive_term_v * visc;
 
-diffusive_term_u = diffusive_term_u./delta^2;
-diffusive_term_v = diffusive_term_v./delta^2;
-
 %As a periodic domain is being used, obtain the value of the diffusive
 %term at the edges using the halo_updt function
 diffusive_term_u = halo_updt(diffusive_term_u);

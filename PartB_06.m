@@ -23,26 +23,13 @@ N = 10; %number of divisions
 delta = L/N; %side of each CV, we consider squared CV's
 
 %% PREPROCESSING & PROCESSING
-
-%matrix A is calculated for N divisions
-A = matrixA(N); 
-
 %coordinates and arbitriary velocities in each CV for part B
 [coord_u, coord_v] = coordinates (N, delta);
 
 [u,v] = arbitrary_velocities_B (N, coord_u, coord_v);
 
-% time-step calculated with the data given
-delta_t = time_step (u, v, delta, visc);
-
-%b vector is calculated
-[b, div_u, up, vp] = b_vector (delta_t, delta, u, v, N);
-
-%pseudo_p is calculated
-pseudo_p = A \ b;
-
-%calculation for the pressure in each CV
-[p, u1, v1] = pressure_velocity (pseudo_p, density, delta_t, delta, N, up, vp);
+%% PROCESSING
+[p, u1, v1, div_u] = pressure_field (u, v, N, delta, visc, density);
 
 %% RESULTS AND VERIFICATION
 

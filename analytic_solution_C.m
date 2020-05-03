@@ -3,7 +3,7 @@
 % This function calculates the analytical solution for the velocities, and
 % pressure fields in order to compare them with the numerical results.
 
-function [u_an,v_an,P_an]=analytic_solution_C(N,delta,t,visc,dens)
+function [u_an,v_an,P_an]=analytic_solution_C(N,delta,t,visc,density)
 
     %We will calculate the velocities and pressure fields in both 
     %directions in a symbolic way.
@@ -13,7 +13,7 @@ function [u_an,v_an,P_an]=analytic_solution_C(N,delta,t,visc,dens)
     %Solution
     f = exp(-8*pi^2*visc*t);
     velocity=[f*cos(2*pi*xx)*sin(2*pi*yx),-f*cos(2*pi*yy)*sin(2*pi*xy)];
-    pressure=(f.^2)*(dens*(cos(4*pi*x_p)+cos(4*pi*y_p)))/4;
+    pressure=(f.^2)*(density*(cos(4*pi*x_p)+cos(4*pi*y_p)))/4;
 
     %We get the coordinates where the analytical calculation from the 
     %convective term will be located.

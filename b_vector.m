@@ -2,11 +2,15 @@
 %this function will calculate the b vector for the given velocities and
 %data
 
-function [b, div_u, up, vp] = b_vector (delta_t, delta, u, v, N)
+function [b, div_u, up, vp] = b_vector (delta_t, delta, u, v, N, Rx, Ry, convective_term_u, diffusive_term_u, convective_term_v,diffusive_term_v)
+
+
+RX = R_term_calc(convective_term_u,diffusive_term_u,delta);
+RY = R_term_calc(convective_term_v,diffusive_term_v,delta);
 
 %velocities for instant n-1 are fixed
-up = u;
-vp = v;
+up = u + delta_t.*(3/2.*RX-1/2.*Rx);
+vp = v + delta_t.*(3/2.*RY-1/2.*Ry);
 
 %surrounding velocities are calculated following the algorythm described in
 %the slides

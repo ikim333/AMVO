@@ -4,7 +4,7 @@
 %of divisions of the domain, the coordinates of each node and the viscosity
 %of the fluid.
 
-function [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_A (N, coord_u, coord_v, visc, delta)
+function [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_solution_A (N, coord_u, coord_v, visc, delta)
 
 %Define sym variables
 syms x y

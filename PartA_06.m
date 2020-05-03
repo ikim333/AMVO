@@ -58,8 +58,11 @@ for i=1:n_eval
 
     %Numerical diffusive term
     [diffusive_term_u, diffusive_term_v] = diffusive(u, v, N(i), delta(i), visc);
+    
+    diffusive_term_u = diffusive_term_u./delta(i)^2;
+    diffusive_term_v = diffusive_term_v./delta(i)^2;
 
-    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_A (N, coord_u, coord_v, visc, delta(i));
+    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_solution_A (N, coord_u, coord_v, visc, delta(i));
 
     
     %Numerical convective term
@@ -67,7 +70,7 @@ for i=1:n_eval
     [convective_term_v] = convective(v, u, delta(i), N(i));
 
     %Analitycal convective and diffusive terms
-    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_A (N(i), coord_u, coord_v, visc);
+    [analitic_conv_u, analitic_conv_v, analitic_diff_u, analitic_diff_v] = analitic_solution_A (N(i), coord_u, coord_v, visc);
 
     
     %Difference between analitical and numerical results

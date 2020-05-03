@@ -2,7 +2,7 @@
 %This function returns the kinetic energy value for each given velocity 
 %field component 
 
-function k = kinetic_energy(u,v,delta, N)
+function k = kinetic_energy(u, v, delta, N)
     
     dV = delta^2;
     k = 0;
